@@ -6,7 +6,7 @@ class Game
     @board[position] = player unless position == nil
   end
 
-  def move(player)
+  def best_move_for(player)
     (0..8).each do |i|
       if board[i,1] == '-'
         game = play(i, player)
@@ -25,6 +25,7 @@ class Game
   end
 
   def winner
+    # check if the horizontal lines match for now
     if board[0, 1] != '-' && board[0, 1] == board[1,1] &&
       board[1,1] == board[2, 1]
 
