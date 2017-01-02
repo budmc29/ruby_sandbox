@@ -1,6 +1,4 @@
 class SelectionSort
-  @debug = false
-
   def initialize(data)
     @data = data.dup
   end
@@ -8,8 +6,8 @@ class SelectionSort
   def run
     verify
 
-    # sort
-    alternative_sort
+    sort
+    # alternative_sort
   end
 
   private
@@ -22,7 +20,9 @@ class SelectionSort
     end
   end
 
-  def sort
+  def verbose_sort
+    @debug = false
+
     puts "starting array #@data" if @debug
 
     sort_max = @data.size
@@ -67,23 +67,45 @@ class SelectionSort
     @data
   end
 
-  def alternative_sort
-    # Selection sort: A naive sort that goes through the container and selects the smallest element,
-    # putting it at the beginning. Repeat until the end is reached.
-    # Requirements: Needs to be able to compare elements with <=>, and the [] []= methods should
-    # be implemented for the container.
-    # Time Complexity: О(n^2)
-    # Space Complexity: О(n) total, O(1) auxiliary
-    # Stable: Yes
-    #
-    #   Algorithms::Sort.selection_sort [5, 4, 3, 1, 2] => [1, 2, 3, 4, 5]
-    0.upto(@data.size-1) do |i|
-      min = i
-      (i+1).upto(@data.size-1) do |j|
-        min = j if (@data[j] <=> @data[min]) == -1
+  def sort
+    last_pos = @data.size
+    last_pos.times do |starting_pos|
+      smallest = starting_pos
+
+      (starting_pos + 1).upto(last_pos - 1) do |compared_pos|
+        current_item = @data[smallest]
+        compared = @data[compared_pos]
+
+        if (compared < current_item)
+          smallest = compared_pos
+        end
       end
-      @data[i], @data[min] = @data[min], @data[i] # Swap
+
+      unless smallest == starting_pos
+        @data[smallest], @data[starting_pos] = @data[starting_pos], @data[smallest]
+      end
     end
+
+    @data
+  end
+
+  # Selection sort: A naive sort that goes through the container and selects the smallest element,
+  # putting it at the beginning. Repeat until the end is reached.
+  #
+  # Time Complexity: О(n^2)
+  # Space Complexity: О(n) total, O(1) auxiliary
+  # Stable: Yes
+  def alternative_sort
+    @data.size.times do |i|
+      min = i
+
+      (i+1).upto(@data.size-1) do |j|
+        min = j if @data[j] < @data[min]
+      end
+
+      @data[i], @data[min] = @data[min], @data[i]
+    end
+
     @data
   end
 end
