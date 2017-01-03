@@ -1,0 +1,10 @@
+require 'rake/testtask'
+
+task default: :test
+
+desc 'Run all unit tests'
+Rake::TestTask.new do |task|
+  task.warning = true
+  task.verbose = true
+  task.pattern = 'test/*.rb'
+end
