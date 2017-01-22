@@ -1,3 +1,0 @@
-require 'tk'
-
-puts 'test'
