@@ -1,0 +1,21 @@
+%h1= @title
+%form#video-form{ action: '/video/create', method: 'post', enctype: 'multipart/form-data' }
+  %label Title:
+  %input#title{ type: 'text', name: 'video[title]' }
+
+  %label Description:
+  %input#description{ type: 'text', name: 'video[description]' }
+
+  %label Genre:
+  %input#genre{ type: 'text', name: 'video[genre]' }
+
+  %label Length:
+  %input#length{ type: 'text', name: 'video[length' }
+
+  %label Image:
+  %input#image-file{ type: 'file', name: 'image-file' }
+
+  %label Video:
+  %input#video-file{ type: 'file', name: 'video-file' }
+
+  %input{ type: 'submit' }

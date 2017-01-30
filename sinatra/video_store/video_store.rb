@@ -35,7 +35,7 @@ class Video
 end
 
 class Attachment
-  include dataMapper::Resource
+  include DataMapper::Resource
 
   belongs_to :video
 
@@ -43,6 +43,7 @@ class Attachment
   property :created_at, DateTime
   property :extension, String
   property :filename, String
+  property :mime_type, String
   property :path, Text
   property :size, Integer
   property :updated_at, DateTime
@@ -63,4 +64,40 @@ class Attachment
 
     FileUtils.symlink(self.path, File.join($config.file_properties.send(supported_mime_type['type']).link_path, file[:filename]))
   end
+end
+
+configure :development do
+  DataMapper.finalize
+  DataMapper.auto_upgrade!
+end
+
+before do
+  headers 'Content-Type' => 'text/html; charset=utf-8'
+end
+
+get '/' do
+  @title = 'The Video Store'
+  haml :index
+end
+
+post '/video/create' do
+  video = Video.new(params[:video])
+  image_attachment = video.attachments.new
+  video_attachment = video.attachments.new
+  image_attachment.handle_upload(params['image-file'])
+  video_attachment.handle_upload(params['video-file'])
+
+  if video.save
+    @message = 'Video was saved.'
+  else
+    @message = 'Video was not saved.'
+  end
+
+  haml :create
+end
+
+get '/video/new' do
+  @title = 'Upload Video'
+
+  haml :new
 end
