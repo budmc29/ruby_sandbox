@@ -1,0 +1,15 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    ffi (1.9.17)
+    gtk (0.1.0)
+      ffi
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  gtk
+
+BUNDLED WITH
+   1.14.3
