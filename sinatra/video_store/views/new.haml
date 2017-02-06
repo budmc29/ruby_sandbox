@@ -1,21 +1,29 @@
-%h1= @title
 %form#video-form{ action: '/video/create', method: 'post', enctype: 'multipart/form-data' }
-  %label Title:
-  %input#title{ type: 'text', name: 'video[title]' }
+  %fieldset
+    %legend=@title
+    .pure-control-group
+      %label Title:
+      %input#title{ type: 'text', name: 'video[title]' }
 
-  %label Description:
-  %input#description{ type: 'text', name: 'video[description]' }
+    .pure-control-group
+      %label Description:
+      %input#description{ type: 'text', name: 'video[description]' }
 
-  %label Genre:
-  %input#genre{ type: 'text', name: 'video[genre]' }
+    .pure-control-group
+      %label Genre:
+      %input#genre{ type: 'text', name: 'video[genre]' }
 
-  %label Length:
-  %input#length{ type: 'text', name: 'video[length' }
+    .pure-control-group
+      %label Length:
+      %input#length{ type: 'text', name: 'video[length' }
 
-  %label Image:
-  %input#image-file{ type: 'file', name: 'image-file' }
+    .pure-control-group
+      %label Image:
+      %input#image-file{ type: 'file', name: 'image-file' }
 
-  %label Video:
-  %input#video-file{ type: 'file', name: 'video-file' }
+    .pure-control-group
+      %label Video:
+      %input#video-file{ type: 'file', name: 'video-file' }
 
-  %input{ type: 'submit' }
+.pure-controls
+  %button.pure-button.pure-button-primary{ type: 'submit' } Submit
