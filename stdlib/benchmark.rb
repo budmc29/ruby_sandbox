@@ -1,7 +1,7 @@
 require 'benchmark'
 
 class BenchmarkTester
-  NUM = 1000_000
+  NUM = 500_000
 
   def run
     Benchmark.bmbm do |benchmark|
