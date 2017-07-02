@@ -25,7 +25,7 @@ class GigasecondTest < Minitest::Test
   end
 
   def test_valid_date_in_string_format
-    assert_equal Time.utc(2043, 1, 1, 1, 46, 40), Gigasecond.from('2011-4-25 00:00:00')
+    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from('2011-4-25 00:00:00')
   end
 
   def test_invalid_input
@@ -35,10 +35,14 @@ class GigasecondTest < Minitest::Test
   end
 
   def test_valid_date_passed_as_date_time
-    assert_equal Time.utc(2043, 1, 1, 1, 46, 40), Gigasecond.from(DateTime.new(2011,4,25,0,0,0))
+    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from(DateTime.new(2011,4,25,0,0,0))
   end
 
   def test_valid_date_passed_as_unix_timestamp
-    assert_equal Time.utc(2043, 1, 1, 1, 46, 40), Gigasecond.from(1303689600)
+    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from(1303689600)
+  end
+
+  def test_bookkeeping
+    assert_equal 6, BookKeeping::VERSION
   end
 end

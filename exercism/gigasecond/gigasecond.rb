@@ -6,16 +6,16 @@ class Gigasecond
 
   # Requires a moment as a valid date
   def self.from(moment)
-    Time.at(parse(moment) + GIGASECOND).utc
+    Time.at(parse(moment) + GIGASECOND)
   end
 
   private
 
   def self.parse(moment)
-    if moment.is_a?(String)
-      DateTime.parse(moment).to_time
-    elsif moment.is_a?(DateTime)
+    if moment.respond_to?(:to_time)
       moment.to_time
+    elsif moment.is_a?(String)
+      DateTime.parse(moment).to_time
     else
       moment
     end
@@ -23,5 +23,5 @@ class Gigasecond
 end
 
 module BookKeeping
-  VERSION = 11
+  VERSION = 6
 end
