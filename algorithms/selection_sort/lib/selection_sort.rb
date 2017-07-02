@@ -3,7 +3,7 @@ class SelectionSort
     @data = data.dup
   end
 
-  def run
+  def call
     verify
 
     sort
