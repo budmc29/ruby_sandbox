@@ -7,13 +7,13 @@ class Squares
   # Calculates he square of the sum of the first n natural numbers
   # (1 + 2 + ... + x)²
   def square_of_sum
-    (1..@limit).inject(0, :+) ** 2
+    (1..@limit).sum ** 2
   end
 
   # Calculates the sum of the squares of the first n natural numbers
   # 1² + 2² + ... + x²
   def sum_of_squares
-    (1..@limit).inject(0){ |s, e| s + e ** 2 }
+    (1..@limit).sum{ |element| element ** 2 }
   end
 
   def difference

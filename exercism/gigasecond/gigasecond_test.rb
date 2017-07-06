@@ -1,4 +1,3 @@
-#!/usr/bin/env ruby
 require 'minitest/autorun'
 require_relative 'gigasecond'
 
@@ -24,22 +23,16 @@ class GigasecondTest < Minitest::Test
     assert_equal Time.utc(2046, 10, 3, 1, 46, 39), Gigasecond.from(Time.utc(2015, 1, 24, 23, 59, 59))
   end
 
-  def test_valid_date_in_string_format
-    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from('2011-4-25 00:00:00')
+  # ADDED
+  def test_returns_the_result_in_the_same_timezon_given
+    assert_equal Time.new(2049, 3, 10, 22, 31, 07), Gigasecond.from(Time.new(2017, 7, 2, 21, 44, 27))
   end
 
-  def test_invalid_input
-    assert_raises 'invalid date' do
+  # ADDED
+  def test_requires_valid_input
+    assert_raises ArgumentError do
       Gigasecond.from('eot')
     end
-  end
-
-  def test_valid_date_passed_as_date_time
-    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from(DateTime.new(2011,4,25,0,0,0))
-  end
-
-  def test_valid_date_passed_as_unix_timestamp
-    assert_equal Time.new(2043, 1, 1, 1, 46, 40), Gigasecond.from(1303689600)
   end
 
   def test_bookkeeping
