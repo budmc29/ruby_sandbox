@@ -1,30 +1,42 @@
+require 'set'
+require 'pry-byebug'
+
+# Uses the Sieve of Eratosthenes to find all the primes from 2
+# up to a given number
 class Sieve
   def initialize(limit)
     @limit = limit
   end
 
   def primes
-    return [] if @limit < 2
+    return [] if @limit <= 2
 
-    hash = {}
-    (2..@limit).each do |number|
-      hash[number] = :unmarked
-    end
+    unmarked = Set.new(2..@limit)
+    marked = Set.new
 
-    hash.each do |number, flag|
-      unflagged = hash.select { |nr, fl| fl == :unmarked }
-      unflagged.each do |number2, flag2|
-        if number2 == number
-          next
+    unmarked.each do |_step|
+      p "step #{_step}"
+      p "unmarked #{unmarked.inspect}"
+
+      unmarked.each_slice(_step) do |items|
+        unless _step == 2
+          binding.pry
         end
 
-        if number2 % number == 0
-          hash[number2] = :marked
-        end
+        item = items.first
+        next if item < _step
+        next if item == _step
+
+        p "item #{item}"
+
+        unmarked.delete(item)
+        marked.add(item)
       end
+
+      # binding.pry
     end
 
-    hash.select { |number, flag| flag == :unmarked }.map { |e| e[0] }
+    # binding.pry
   end
 end
 
