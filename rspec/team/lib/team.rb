@@ -15,6 +15,10 @@ class Team
     @players.include? 'Celebrity Joe'
   end
 
+  def enter_competition(competition)
+    raise Competition::Closed if competition.questions.empty?
+  end
+
   private
 
   def list_of_banned_words
