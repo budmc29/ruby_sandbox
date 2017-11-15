@@ -9,7 +9,7 @@ RSpec.describe Competition do
   let(:team) { Team.new('Random name') }
 
   context 'having no question' do
-    before { competition.questions = [] }
+    let(:competition) { double(questions: []) }
 
     it "doesn't accept any teams" do
       expect(competition).to_not allow_teams_to_enter
@@ -17,9 +17,16 @@ RSpec.describe Competition do
   end
 
   context 'having questions' do
-    before { competition.questions = [ title: 'Question' ] }
+    let(:competition) { double(questions: [ double ]) }
     subject { competition }
 
     it { should allow_teams_to_enter }
+  end
+
+  context 'when started' do
+    it 'is closed' do
+      expect(competition).to receive(:close)
+      competition.start
+    end
   end
 end

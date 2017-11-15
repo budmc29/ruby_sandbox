@@ -8,11 +8,11 @@ RSpec::Matchers.define :allow_teams_to_enter do |expect|
     end
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "expected that #{actual} would allow team to enter"
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected that #{actual} would not allow team to enter"
   end
 end
