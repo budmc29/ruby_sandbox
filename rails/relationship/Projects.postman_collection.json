@@ -1,0 +1,82 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Projects",
+		"_postman_id": "0c28737e-bf17-23c1-b24d-c0079d4aa7a2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Companies",
+			"request": {
+				"url": "",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Company",
+			"request": {
+				"url": "{{url}}/companies",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"company\": {\n\t\t\"name\": \"John Doe\",\n\t\t\"phone\": \"07431464260\",\n\t\t\"email\": \"john.doe@gmail.com\",\n\t\t\"website\": \"website.com\",\n\t\t\"address\": \"123 Street, Colorado, US\",\n\t\t\"customer_id\": \"1001\",\n\t\t\"additional_info\": \"\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Contacts",
+			"request": {
+				"url": "{{url}}/contacts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Contacts",
+			"request": {
+				"url": "{{url}}/contacts",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
