@@ -16,6 +16,7 @@ class CompaniesController < ApplicationController
   # POST /companies
   def create
     @company = Company.new(company_params)
+    @company.contacts = (relationship_params[:contacts] || [])
 
     if @company.save
       render json: @company, status: :created, location: @company
@@ -27,6 +28,8 @@ class CompaniesController < ApplicationController
   # PATCH/PUT /companies/1
   def update
     if @company.update(company_params)
+      @contact.contacts = relationship_params[:contacts] if relationship_params[:contacts]
+
       render json: @company
     else
       render json: { errors: [@company.errors] }, status: :unprocessable_entity
@@ -44,7 +47,7 @@ class CompaniesController < ApplicationController
     end
 
     def company_params
-      params.require(:company).permit(
+      params.require(:data).require(:attributes).permit(
         :additional_info,
         :address,
         :customer_id,
