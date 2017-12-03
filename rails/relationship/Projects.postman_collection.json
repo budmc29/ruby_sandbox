@@ -1,82 +1,378 @@
 {
-	"variables": [],
 	"info": {
 		"name": "Projects",
-		"_postman_id": "0c28737e-bf17-23c1-b24d-c0079d4aa7a2",
+		"_postman_id": "20fe7452-f343-9ecc-4230-6fe2ced7d44a",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Get All Companies",
-			"request": {
-				"url": "",
-				"method": "GET",
-				"header": [],
-				"body": {},
-				"description": ""
-			},
-			"response": []
+			"name": "Companies",
+			"description": "",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"company\",\n\t\t\"attributes\": {\n\t\t\t\t\"name\": \"John Doe\",\n\t\t\t\t\"phone\": \"07431464260\",\n\t\t\t\t\"email\": \"john.doe@gmail.com\",\n\t\t\t\t\"website\": \"website.com\",\n\t\t\t\t\"address\": \"123 Street, Colorado, US\",\n\t\t\t\t\"customer_id\": \"1001\",\n\t\t\t\t\"additional_info\": \"\"\n\t\t},\n\t\t\"relationships\": {\n        }\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/companies",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"company\",\n\t\t\"attributes\": {\n\t\t\t\t\"name\": \"John Doe\",\n\t\t\t\t\"phone\": \"07431464260\",\n\t\t\t\t\"email\": \"john.doe@gmail.com\",\n\t\t\t\t\"website\": \"website.com\",\n\t\t\t\t\"address\": \"123 Street, Colorado, US\",\n\t\t\t\t\"customer_id\": \"1001\",\n\t\t\t\t\"additional_info\": \"\"\n\t\t},\n\t\t\"relationships\": {\n        }\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/companies/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"companies",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Create Company",
-			"request": {
-				"url": "{{url}}/companies",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Contacts",
+			"description": "",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"company\": {\n\t\t\"name\": \"John Doe\",\n\t\t\"phone\": \"07431464260\",\n\t\t\"email\": \"john.doe@gmail.com\",\n\t\t\"website\": \"website.com\",\n\t\t\"address\": \"123 Street, Colorado, US\",\n\t\t\"customer_id\": \"1001\",\n\t\t\"additional_info\": \"\"\n\t}\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"contact\",\n\t\t\"attributes\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"title\": \"Head of marketing\"\n\t},\n\t\"relationships\": {\n\t\t\"company\": {\n\t\t\t\"data\": {\n\t\t\t\"type\": \"company\",\n\t\t\t\"id\": \"1\"\n\t\t\t}\n\t\t}\n\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"contact\",\n\t\t\"attributes\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"title\": \"Head of marketing\"\n\t},\n\t\"relationships\": {\n\t\t\"company\": {\n\t\t\t\"data\": {\n\t\t\t\"type\": \"company\",\n\t\t\t\"id\": \"2\"\n\t\t\t}\n\t\t}\n\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/contacts/4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"contacts",
+								"4"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Create Contacts",
-			"request": {
-				"url": "{{url}}/contacts",
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Projects",
+			"description": "",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							]
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"type\": \"project\",\n        \"attributes\": {\n            \"name\": \"An awesome project\",\n            \"status\": 0\n        },\n        \"relationships\": {\n            \"contacts\": {\n                \"data\": [\n                    {\n                        \"type\": \"contacts\",\n                        \"id\": \"4\"\n                    }\n                ]\n            }\n        }\n    }\n\n}"
+						},
+						"url": {
+							"raw": "{{url}}/projects",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"type\": \"project\",\n        \"attributes\": {\n            \"name\": \"An awesome project\",\n            \"status\": 0\n        },\n        \"relationships\": {\n            \"contacts\": {\n                \"data\": [\n                    {\n                        \"type\": \"contacts\",\n                        \"id\": \"4\"\n                    }\n                ]\n            }\n        },\n        \"id\": \"1\"\n    }\n\n}"
+						},
+						"url": {
+							"raw": "{{url}}/projects/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"projects",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"name": "Get All Contacts",
-			"request": {
-				"url": "{{url}}/contacts",
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
+			"name": "Offers",
+			"description": "",
+			"item": []
+		},
+		{
+			"name": "Notes",
+			"description": "",
+			"item": [
+				{
+					"name": "All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						},
 						"description": ""
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"contact\": {\n\t\t\"family_name\": \"smith\",\n\t\t\"given_names\": \"jane\",\n\t\t\"phone_number\": \"0743135357\",\n\t\t\"email\": \"smith.jane@gmail.com\",\n\t\t\"company_id\": 1,\n\t\t\"title\": \"Head of marketing\"\n\t}\n}"
+					},
+					"response": []
 				},
-				"description": ""
-			},
-			"response": []
+				{
+					"name": "Create General Note",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"general-notes\",\n\t\t\"attributes\": {\n\t\t\t\t\"description\": \"Lorem Ipsum Dolor Sit Ameo\",\n\t\t\t\t\"title\": \"Lorem Ipsum\"\n\t\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Phone Call",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"phone-call\",\n\t\t\"attributes\": {\n\t\t\t\t\"description\": \"Lorem Ipsum Dolor Sit Ameo\",\n\t\t\t\t\"title\": \"Phone Call Lorem Ipsum\"\n\t\t},\n\t\t\"relationships\": {\n\t\t\t\"contact\": {\n\t\t\t\t\"data\": {\n\t\t\t\t\t\"type\": \"contacts\",\n\t\t\t\t\t\"id\": \"4\"\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/notes",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Edit",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"data\": {\n\t\t\"type\": \"company\",\n\t\t\"attributes\": {\n\t\t\t\t\"name\": \"John Doe\",\n\t\t\t\t\"phone\": \"07431464260\",\n\t\t\t\t\"email\": \"john.doe@gmail.com\",\n\t\t\t\t\"website\": \"website.com\",\n\t\t\t\t\"address\": \"123 Street, Colorado, US\",\n\t\t\t\t\"customer_id\": \"1001\",\n\t\t\t\t\"additional_info\": \"\"\n\t\t},\n\t\t\"relationships\": {\n        }\n\t}\n}"
+						},
+						"url": {
+							"raw": "{{url}}/notes/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes",
+								"1"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
